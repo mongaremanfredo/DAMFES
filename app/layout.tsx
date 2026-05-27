@@ -2,12 +2,12 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "DAMFES FORUM | Premium UTME/JAMB Online Tutorials",
+  title: "DAMFES FORUM | JAMB Score Plan and CBT Readiness System",
   description:
-    "Structured online coaching, CBT practice, mentorship, and admission guidance for ambitious Nigerian UTME students.",
+    "CBT simulation, weekly performance tracking, mentor accountability, and admission guidance for Nigerian UTME students.",
   openGraph: {
     title: "DAMFES FORUM",
-    description: "Score higher in JAMB UTME with structured online coaching.",
+    description: "Build a JAMB score plan with CBT readiness training and admission mentorship.",
     type: "website"
   }
 };

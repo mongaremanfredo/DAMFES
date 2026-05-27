@@ -3,8 +3,9 @@
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
+  AlertTriangle,
   ArrowRight,
-  Award,
+  BarChart3,
   BookOpenCheck,
   Check,
   ChevronDown,
@@ -20,11 +21,23 @@ import {
   Star,
   Target,
   Trophy,
-  UsersRound
+  UsersRound,
+  Instagram
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
 const navLinks = ["Home", "Programs", "Results", "Community", "FAQ", "Contact"];
+
+const links = {
+  enrollment:
+    "https://wa.me/2349158561146?text=Hi%20DAMFES%2C%20I%20want%20to%20join%20the%20BJOT%20Post%20UTME%20Class",
+  whatsappChannel: "https://whatsapp.com/channel/0029Vb5zmA2EwEk2zFN3vr3H",
+  telegram: "https://t.me/DAMFESFORUM",
+  contact:
+    "https://wa.me/2349158561146?text=Hi%20DAMFES.%20I%27m%20interested%20in%20the%20Edu.%20updates.%20My%20name%20is____",
+  testimonies: "https://wa.me/p/24182034248135377/2349158561146",
+  instagram: "https://www.instagram.com/damfes_forum/"
+};
 
 const images = {
   hero:
@@ -109,11 +122,13 @@ function Navbar() {
         </div>
 
         <a
-          href="#programs"
+          href={links.enrollment}
+          target="_blank"
+          rel="noreferrer"
           className="inline-flex shrink-0 items-center gap-2 rounded-md bg-gold px-3 py-3 text-sm font-bold text-navy transition hover:-translate-y-0.5 hover:bg-[#e9bc41] focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-navy sm:px-4"
         >
-          <span className="sm:hidden">Join</span>
-          <span className="hidden sm:inline">Join 2026 UTME</span>
+          <span className="sm:hidden">Apply</span>
+          <span className="hidden sm:inline">Apply for 2026 Cohort</span>
           <ArrowRight size={16} />
         </a>
       </nav>
@@ -150,32 +165,36 @@ function Hero() {
           transition={{ duration: 0.8 }}
         >
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-gold/25 bg-gold/10 px-4 py-2 text-sm font-semibold text-gold">
-            <Sparkles size={16} /> Premium UTME coaching for serious students
+            <Sparkles size={16} /> CBT mastery, score growth, and admission readiness
           </div>
           <h1 className="max-w-[11ch] break-words font-display text-4xl font-black leading-[1.08] text-white sm:max-w-4xl sm:text-6xl sm:leading-[1.02] lg:text-7xl">
-            Score Higher in JAMB UTME With Structured Online Coaching
+            Build the JAMB Score Plan That Gets You Exam-Ready
           </h1>
           <p className="mt-7 max-w-[calc(100vw-32px)] text-lg leading-8 text-white/72 sm:max-w-2xl sm:text-xl">
-            Live tutorials, CBT practice, mentorship, exam strategies, and admission guidance trusted
-            by ambitious Nigerian students.
+            DAMFES B.J.O.T trains UTME students with CBT simulation loops, weekly performance
+            tracking, mentor accountability, and admission guidance from preparation to screening.
           </p>
           <div className="mt-9 flex flex-col gap-4 sm:flex-row">
             <a
-              href="#programs"
+              href={links.enrollment}
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-gold px-6 py-4 font-bold text-navy transition hover:-translate-y-1 hover:bg-[#efc75a] sm:w-auto"
             >
-              Join 2026 Program <ArrowRight size={18} />
+              Get Your JAMB Score Plan <ArrowRight size={18} />
             </a>
             <a
-              href="#results"
+              href={links.contact}
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-white/18 bg-white/8 px-6 py-4 font-bold text-white backdrop-blur transition hover:-translate-y-1 hover:border-gold/45 hover:text-gold sm:w-auto"
             >
-              View Results <Trophy size={18} />
+              Check Admission Readiness <Trophy size={18} />
             </a>
           </div>
 
           <div className="mt-10 grid max-w-3xl grid-cols-1 gap-3 sm:grid-cols-4">
-            {["CAC Registered", "2025 Top Score: 368/400", "Online Community Support", "Admission Mentorship"].map(
+            {["CAC Registered", "2025 Top Score: 368/400", "Weekly CBT Tracking", "Admission Mentorship"].map(
               (item) => (
                 <div key={item} className="glass rounded-lg px-4 py-3 text-sm font-semibold text-white/86">
                   <Check className="mb-2 text-gold" size={16} />
@@ -216,7 +235,7 @@ function Hero() {
                 </span>
               </div>
               <div className="grid grid-cols-2 gap-3">
-                {["125+ Educational Posts", "UTME Mentorship", "CBT Practice", "Telegram + WhatsApp Support"].map(
+                {["125+ Study Posts", "Mentor Accountability", "CBT Pressure Drills", "Telegram + WhatsApp Support"].map(
                   (stat) => (
                     <div key={stat} className="rounded-lg bg-white/8 p-4">
                       <p className="text-sm font-semibold text-white/84">{stat}</p>
@@ -232,22 +251,72 @@ function Hero() {
   );
 }
 
+function ProblemAgitation() {
+  const problems = [
+    {
+      icon: AlertTriangle,
+      title: "Random reading creates false confidence",
+      text: "Many students cover topics without knowing which subjects are costing them marks or how their timing will hold up in CBT."
+    },
+    {
+      icon: Clock3,
+      title: "CBT pressure exposes weak preparation",
+      text: "A student can know a topic and still lose marks when speed, screen navigation, and exam pressure are not trained together."
+    },
+    {
+      icon: Target,
+      title: "Admission choices need strategy",
+      text: "Score targets, subject combinations, course fit, and post-UTME decisions all affect the admission outcome after the exam."
+    }
+  ];
+
+  return (
+    <section className="bg-[#f7f8fb] py-24 text-navy">
+      <div className="section-shell">
+        <Reveal className="mx-auto max-w-3xl text-center">
+          <p className="font-bold uppercase tracking-[0.28em] text-gold">Why students miss their target</p>
+          <h2 className="mt-4 font-display text-4xl font-black sm:text-5xl">
+            Hard work is not enough when preparation is not measured.
+          </h2>
+          <p className="mt-5 text-lg leading-8 text-slate-600">
+            DAMFES is built for students who need a clear score plan, not another pile of notes.
+            The goal is to find weak points early, train under CBT pressure, and keep students
+            accountable before registration and exam day.
+          </p>
+        </Reveal>
+
+        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+          {problems.map((problem, index) => (
+            <Reveal key={problem.title} delay={index * 0.08}>
+              <div className="h-full rounded-xl border border-slate-200 bg-white p-7 shadow-[0_18px_60px_rgba(8,17,32,.08)]">
+                <problem.icon className="text-gold" size={30} />
+                <h3 className="mt-5 font-display text-2xl font-bold">{problem.title}</h3>
+                <p className="mt-3 leading-7 text-slate-600">{problem.text}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Results() {
   const cards = [
-    { icon: Trophy, title: "368/400 Top Score", text: "A benchmark result from disciplined preparation and weekly CBT pressure drills." },
-    { icon: Award, title: "Admission Wins", text: "Students guided through subject combinations, course fit, screening, and post-UTME decisions." },
-    { icon: Target, title: "Score Growth", text: "Mentorship helps students replace random reading with measurable weekly progress." }
+    { icon: Trophy, title: "Outcome trust", text: "A 368/400 top score shows the standard students are trained toward through focused practice and exam conditioning." },
+    { icon: BarChart3, title: "System trust", text: "Weekly checks help students see what is improving, what is still weak, and what should be revised before the next drill." },
+    { icon: UsersRound, title: "Activity trust", text: "WhatsApp and Telegram communities keep students close to updates, practice prompts, mentor replies, and cohort momentum." }
   ];
 
   return (
     <section id="results" className="bg-[#f7f8fb] py-24 text-navy">
       <div className="section-shell">
         <Reveal className="mx-auto max-w-3xl text-center">
-          <p className="font-bold uppercase tracking-[0.28em] text-gold">Proof that travels</p>
-          <h2 className="mt-4 font-display text-4xl font-black sm:text-5xl">Real Students. Real Results.</h2>
+          <p className="font-bold uppercase tracking-[0.28em] text-gold">Proof with context</p>
+          <h2 className="mt-4 font-display text-4xl font-black sm:text-5xl">Results matter most when the process is visible.</h2>
           <p className="mt-5 text-lg leading-8 text-slate-600">
-            DAMFES B.J.O.T focuses on outcomes students and parents can recognize: stronger CBT
-            confidence, better strategy, and guided admission decisions.
+            Parents and students need more than motivation. DAMFES combines institutional trust,
+            measurable practice, student community, and admission mentorship into one preparation path.
           </p>
         </Reveal>
 
@@ -258,7 +327,7 @@ function Results() {
             <div className="absolute bottom-0 p-7">
               <p className="text-sm font-bold uppercase tracking-[0.25em] text-gold">2025 highlight</p>
               <p className="mt-2 font-display text-6xl font-black text-white">368/400</p>
-              <p className="mt-3 max-w-md text-white/75">Top performance showcased as part of a culture of serious preparation.</p>
+              <p className="mt-3 max-w-md text-white/75">A visible performance benchmark tied to consistent drills, subject focus, and exam-readiness training.</p>
             </div>
           </Reveal>
 
@@ -279,7 +348,7 @@ function Results() {
         </div>
 
         <div className="mt-10 grid gap-4 sm:grid-cols-3">
-          {["Hundreds of students guided", "UTME preparation success", "Ongoing mentorship support"].map((metric) => (
+          {["CAC registered platform", "Weekly CBT readiness checks", "Mentorship through admission decisions"].map((metric) => (
             <Reveal key={metric}>
               <div className="rounded-lg border border-slate-200 bg-white px-5 py-6 text-center font-bold shadow-sm">
                 {metric}
@@ -294,9 +363,9 @@ function Results() {
 
 function HowItWorks() {
   const steps = [
-    { icon: ClipboardCheck, title: "Register for the tutorial program", text: "Choose the path that fits your JAMB or admission goal and enter the DAMFES learning system." },
-    { icon: MonitorCheck, title: "Attend live classes and CBT drills", text: "Join structured tutorials, revise with recordings, and train under real exam-style timing." },
-    { icon: GraduationCap, title: "Receive mentorship until admission", text: "Get subject strategy, course guidance, and support through screening and university decisions." }
+    { icon: ClipboardCheck, title: "Placement and score plan", text: "Students enter with a goal, current subject gaps, and a clear plan for what must improve before the exam window." },
+    { icon: MonitorCheck, title: "CBT simulation training loops", text: "Classes, revision, timed drills, and mock-style practice train knowledge, speed, and confidence together." },
+    { icon: GraduationCap, title: "Mentorship until admission decisions", text: "Students get guidance on subject strategy, course choice, screening, and the next move after UTME." }
   ];
 
   return (
@@ -309,8 +378,8 @@ function HowItWorks() {
       />
       <div className="section-shell relative">
         <Reveal className="max-w-2xl">
-          <p className="font-bold uppercase tracking-[0.28em] text-gold">How DAMFES works</p>
-          <h2 className="mt-4 font-display text-4xl font-black sm:text-5xl">From registration to admission clarity.</h2>
+          <p className="font-bold uppercase tracking-[0.28em] text-gold">The DAMFES performance system</p>
+          <h2 className="mt-4 font-display text-4xl font-black sm:text-5xl">A preparation loop built around marks, timing, and admission decisions.</h2>
         </Reveal>
 
         <div className="relative mt-16 grid gap-6 lg:grid-cols-3">
@@ -336,20 +405,20 @@ function HowItWorks() {
 function Programs() {
   const programs = [
     {
-      title: "UTME Intensive Program",
+      title: "UTME Score Growth Track",
       icon: BookOpenCheck,
-      features: ["Live online tutorials", "Recorded classes", "CBT mock practice", "Weekly assessments", "WhatsApp support", "Exam strategy coaching"],
+      features: ["Subject gap diagnosis", "Live exam-focused classes", "CBT mock practice", "Weekly performance checks", "WhatsApp accountability", "Exam strategy coaching"],
       featured: true
     },
     {
-      title: "Direct Entry Mentorship",
+      title: "Admission Readiness Track",
       icon: ShieldCheck,
-      features: ["DE guidance", "Admission support", "Course counseling", "University application assistance"]
+      features: ["DE and post-UTME guidance", "Course and school fit support", "Admission timeline reminders", "University application assistance"]
     },
     {
-      title: "Study Resources Access",
+      title: "Revision Resource Track",
       icon: PlayCircle,
-      features: ["Past questions", "PDF materials", "Revision packs", "Timetables", "Study guides"]
+      features: ["Past questions", "PDF materials", "Revision packs", "Study timetables", "Guided topic priorities"]
     }
   ];
 
@@ -357,8 +426,12 @@ function Programs() {
     <section id="programs" className="bg-[#f7f8fb] py-24 text-navy">
       <div className="section-shell">
         <Reveal className="mx-auto max-w-3xl text-center">
-          <p className="font-bold uppercase tracking-[0.28em] text-gold">Programs</p>
-          <h2 className="mt-4 font-display text-4xl font-black sm:text-5xl">Choose the support structure you need.</h2>
+          <p className="font-bold uppercase tracking-[0.28em] text-gold">Enrollment paths</p>
+          <h2 className="mt-4 font-display text-4xl font-black sm:text-5xl">Choose based on the outcome you need next.</h2>
+          <p className="mt-5 text-lg leading-8 text-slate-600">
+            Students can start with score improvement, admission guidance, or focused revision
+            resources depending on their current readiness level.
+          </p>
         </Reveal>
 
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
@@ -388,14 +461,16 @@ function Programs() {
                   ))}
                 </ul>
                 <a
-                  href="#contact"
+                  href={program.featured ? links.enrollment : links.contact}
+                  target="_blank"
+                  rel="noreferrer"
                   className={`mt-8 inline-flex w-full items-center justify-center gap-2 rounded-md px-5 py-4 font-bold transition ${
                     program.featured
                       ? "bg-gold text-navy hover:bg-[#efc75a]"
                       : "border border-slate-200 bg-slate-950 text-white hover:border-gold hover:bg-navy"
                   }`}
                 >
-                  Get Started <ArrowRight size={17} />
+                  {program.featured ? "Book Placement Assessment" : "Check Fit on WhatsApp"} <ArrowRight size={17} />
                 </a>
               </motion.article>
             </Reveal>
@@ -440,14 +515,15 @@ function Countdown() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_10%,rgba(212,160,23,.24),transparent_38%)]" />
       <div className="section-shell relative grid gap-10 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
         <Reveal>
-          <p className="font-bold uppercase tracking-[0.28em] text-gold">2026 JAMB countdown</p>
-          <h2 className="mt-4 font-display text-4xl font-black sm:text-5xl">2026 UTME Registration Is Approaching</h2>
+          <p className="font-bold uppercase tracking-[0.28em] text-gold">JAMB timeline pressure</p>
+          <h2 className="mt-4 font-display text-4xl font-black sm:text-5xl">Every missed week reduces the time available to fix weak subjects.</h2>
           <p className="mt-5 leading-8 text-white/68">
-            Serious preparation starts before the form is out. DAMFES keeps students aligned with
-            registration, mock exam readiness, and the main UTME window.
+            Registration, mock exams, and the main UTME window create fixed deadlines. DAMFES helps
+            students convert the remaining weeks into CBT practice, revision targets, and admission
+            planning.
           </p>
-          <a href="#contact" className="mt-8 inline-flex items-center gap-2 rounded-md bg-gold px-6 py-4 font-bold text-navy transition hover:-translate-y-1 hover:bg-[#efc75a]">
-            Secure Your Spot <ArrowRight size={18} />
+          <a href={links.enrollment} target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-2 rounded-md bg-gold px-6 py-4 font-bold text-navy transition hover:-translate-y-1 hover:bg-[#efc75a]">
+            Apply for 2026 Cohort <ArrowRight size={18} />
           </a>
         </Reveal>
 
@@ -463,8 +539,8 @@ function Countdown() {
             </div>
             {elapsed && (
               <div className="mt-5 rounded-lg border border-gold/25 bg-gold/10 p-4 text-sm font-semibold leading-6 text-gold">
-                The official 2026 registration start date has passed. Contact DAMFES for the current
-                cohort and admission guidance.
+                The official 2026 registration start date has passed. Contact DAMFES to confirm the
+                current cohort, post-UTME support, and admission guidance options.
               </div>
             )}
             <div className="mt-6 grid gap-3">
@@ -487,17 +563,17 @@ function Community() {
     <section id="community" className="bg-[#f7f8fb] py-24 text-navy">
       <div className="section-shell grid gap-12 lg:grid-cols-[1fr_.9fr] lg:items-center">
         <Reveal>
-          <p className="font-bold uppercase tracking-[0.28em] text-gold">Community</p>
-          <h2 className="mt-4 font-display text-4xl font-black sm:text-5xl">Join Nigeria&apos;s Active UTME Student Community</h2>
+          <p className="font-bold uppercase tracking-[0.28em] text-gold">Activity proof</p>
+          <h2 className="mt-4 font-display text-4xl font-black sm:text-5xl">Stay inside an active exam-prep environment.</h2>
           <p className="mt-5 text-lg leading-8 text-slate-600">
-            Stay close to announcements, daily revision prompts, tutor guidance, peer discussions,
-            and fast answers when exam pressure starts rising.
+            WhatsApp and Telegram keep students close to revision prompts, education updates,
+            mentor direction, and cohort reminders when deadlines are moving fast.
           </p>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-            <a href="#contact" className="inline-flex items-center justify-center gap-2 rounded-md bg-emerald-500 px-6 py-4 font-bold text-white transition hover:-translate-y-1 hover:bg-emerald-600">
+            <a href={links.whatsappChannel} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 rounded-md bg-emerald-500 px-6 py-4 font-bold text-white transition hover:-translate-y-1 hover:bg-emerald-600">
               <MessageCircle size={18} /> Join WhatsApp Channel
             </a>
-            <a href="#contact" className="inline-flex items-center justify-center gap-2 rounded-md bg-sky-500 px-6 py-4 font-bold text-white transition hover:-translate-y-1 hover:bg-sky-600">
+            <a href={links.telegram} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 rounded-md bg-sky-500 px-6 py-4 font-bold text-white transition hover:-translate-y-1 hover:bg-sky-600">
               <Send size={18} /> Join Telegram Group
             </a>
           </div>
@@ -510,7 +586,7 @@ function Community() {
               <Image src={images.community} alt="African teenagers collaborating with laptops" width={900} height={680} className="h-[520px] w-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-transparent to-transparent" />
               <div className="absolute bottom-5 left-5 right-5 grid gap-3">
-                {["New CBT drill drops by 7 PM", "Biology revision room is live", "Mentor feedback: update your course choices"].map((message, index) => (
+                {["CBT drill reminder drops by 7 PM", "Biology weak-area revision is live", "Mentor note: review course choices before screening"].map((message, index) => (
                   <motion.div
                     key={message}
                     initial={{ opacity: 0, x: 22 }}
@@ -533,9 +609,9 @@ function Community() {
 
 function Testimonials() {
   const testimonials = [
-    { name: "Aisha Bello", text: "DAMFES helped me stop reading blindly. The CBT drills made exam day feel familiar, and my score improved beyond what I expected.", result: "Scored 312" },
-    { name: "Chinedu Okafor", text: "The mentorship after UTME was the part I did not know I needed. I got better guidance on course choices and screening.", result: "Admission guided" },
-    { name: "Mariam Adeyemi", text: "The live classes were serious and easy to follow. Having recordings meant I could revise late at night without falling behind.", result: "Consistent weekly growth" }
+    { name: "Aisha Bello", text: "DAMFES helped me stop reading blindly. The CBT drills showed me where I was losing marks, so I knew what to fix each week.", result: "Score plan completed" },
+    { name: "Chinedu Okafor", text: "The mentorship after UTME helped me make better course and screening decisions. It was not just exam teaching.", result: "Admission guided" },
+    { name: "Mariam Adeyemi", text: "The weekly pressure made me more serious. I revised with a timetable and used recordings to catch up before the next assessment.", result: "Consistent weekly growth" }
   ];
   const [active, setActive] = useState(0);
 
@@ -549,7 +625,7 @@ function Testimonials() {
       <div className="section-shell">
         <Reveal className="mx-auto max-w-3xl text-center">
           <p className="font-bold uppercase tracking-[0.28em] text-gold">Student voices</p>
-          <h2 className="mt-4 font-display text-4xl font-black sm:text-5xl">Preparation that feels structured.</h2>
+          <h2 className="mt-4 font-display text-4xl font-black sm:text-5xl">Students remember the system that made them consistent.</h2>
         </Reveal>
 
         <div className="mx-auto mt-12 max-w-4xl">
@@ -583,6 +659,11 @@ function Testimonials() {
               />
             ))}
           </div>
+          <div className="mt-8 text-center">
+            <a href={links.testimonies} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 rounded-md border border-gold/35 px-5 py-3 font-bold text-gold transition hover:-translate-y-1 hover:bg-gold hover:text-navy">
+              View More Testimonies <ArrowRight size={17} />
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -591,12 +672,12 @@ function Testimonials() {
 
 function FAQ() {
   const faqs = [
-    ["Is this online or physical?", "DAMFES B.J.O.T is built for online learning, with live tutorials, community support, and CBT-focused preparation."],
-    ["Will recordings be available?", "Yes. Recorded classes help students revise missed lessons and revisit difficult topics before assessments."],
-    ["Do you help after UTME?", "Yes. Mentorship continues into admission guidance, course counseling, screening decisions, and next-step planning."],
-    ["How do I register?", "Use the contact buttons on this page to reach DAMFES, confirm the current cohort details, and complete enrollment."],
-    ["Is mentorship included?", "Yes. Mentorship is part of the core DAMFES experience, especially for strategy, consistency, and admission choices."],
-    ["Can parents monitor progress?", "Parents can request progress updates and guidance on how their student is responding to the preparation plan."]
+    ["Is this online or physical?", "DAMFES B.J.O.T is designed for online preparation, with live support, community updates, and CBT-focused practice students can follow from anywhere."],
+    ["Will recordings be available?", "Yes. Recordings help students catch up, repeat difficult explanations, and prepare for the next performance check."],
+    ["Do you help after UTME?", "Yes. DAMFES supports students with admission guidance, course decisions, screening direction, and next-step planning after the exam."],
+    ["How do I register?", "Use the application button to open WhatsApp, send the enrollment message, and confirm the current cohort or placement assessment details."],
+    ["Is mentorship included?", "Yes. Mentorship is part of the system because students need accountability, strategy, and admission guidance, not only classes."],
+    ["Can parents monitor progress?", "Parents can contact DAMFES to understand the preparation structure and request updates on how their child is responding to the plan."]
   ];
   const [open, setOpen] = useState(0);
 
@@ -605,7 +686,7 @@ function FAQ() {
       <div className="section-shell grid gap-10 lg:grid-cols-[.75fr_1.25fr]">
         <Reveal>
           <p className="font-bold uppercase tracking-[0.28em] text-gold">FAQ</p>
-          <h2 className="mt-4 font-display text-4xl font-black sm:text-5xl">Answers before you join.</h2>
+          <h2 className="mt-4 font-display text-4xl font-black sm:text-5xl">Questions parents and students ask before enrollment.</h2>
         </Reveal>
         <div className="space-y-3">
           {faqs.map(([question, answer], index) => (
@@ -637,16 +718,17 @@ function FinalCTA() {
       <div className="section-shell relative z-10 max-w-4xl">
         <Reveal>
           <p className="font-bold uppercase tracking-[0.28em] text-gold">Take the next step</p>
-          <h2 className="mt-4 font-display text-5xl font-black leading-tight sm:text-6xl">Your Admission Journey Starts Here</h2>
+          <h2 className="mt-4 font-display text-5xl font-black leading-tight sm:text-6xl">Do not wait until mock scores expose the gaps.</h2>
           <p className="mt-6 max-w-2xl text-xl leading-8 text-white/72">
-            Get structured guidance, expert tutorials, and a community committed to your success.
+            Apply for the current DAMFES cohort, get a score plan, and start training with a
+            system built around CBT readiness and admission decisions.
           </p>
           <div className="mt-9 flex flex-col gap-4 sm:flex-row">
-            <a href="https://wa.me/" className="inline-flex items-center justify-center gap-2 rounded-md bg-gold px-6 py-4 font-bold text-navy transition hover:-translate-y-1 hover:bg-[#efc75a]">
-              Join 2026 UTME Program <ArrowRight size={18} />
+            <a href={links.enrollment} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 rounded-md bg-gold px-6 py-4 font-bold text-navy transition hover:-translate-y-1 hover:bg-[#efc75a]">
+              Apply for 2026 Cohort <ArrowRight size={18} />
             </a>
-            <a href="mailto:hello@damfesforum.com" className="inline-flex items-center justify-center gap-2 rounded-md border border-white/18 bg-white/8 px-6 py-4 font-bold text-white backdrop-blur transition hover:-translate-y-1 hover:border-gold/45 hover:text-gold">
-              Contact DAMFES <MessageCircle size={18} />
+            <a href={links.contact} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 rounded-md border border-white/18 bg-white/8 px-6 py-4 font-bold text-white backdrop-blur transition hover:-translate-y-1 hover:border-gold/45 hover:text-gold">
+              Contact DAMFES on WhatsApp <MessageCircle size={18} />
             </a>
           </div>
         </Reveal>
@@ -677,9 +759,11 @@ function Footer() {
                 {link}
               </a>
             ))}
-            <a href="#contact" className="transition hover:text-gold">WhatsApp</a>
-            <a href="#contact" className="transition hover:text-gold">Telegram</a>
-            <a href="#contact" className="transition hover:text-gold">Instagram</a>
+            <a href={links.whatsappChannel} target="_blank" rel="noreferrer" className="transition hover:text-gold">WhatsApp</a>
+            <a href={links.telegram} target="_blank" rel="noreferrer" className="transition hover:text-gold">Telegram</a>
+            <a href={links.instagram} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 transition hover:text-gold">
+              Instagram <Instagram size={15} />
+            </a>
           </div>
         </div>
         <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-sm text-white/45 sm:flex-row sm:items-center sm:justify-between">
@@ -694,7 +778,9 @@ function Footer() {
 function FloatingWhatsApp() {
   return (
     <a
-      href="https://wa.me/"
+      href={links.contact}
+      target="_blank"
+      rel="noreferrer"
       aria-label="Chat with DAMFES on WhatsApp"
       className="fixed bottom-5 right-5 z-50 grid h-14 w-14 place-items-center rounded-full bg-emerald-500 text-white shadow-[0_18px_48px_rgba(16,185,129,.4)] transition hover:-translate-y-1 hover:bg-emerald-600"
     >
@@ -708,8 +794,9 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
-      <Results />
+      <ProblemAgitation />
       <HowItWorks />
+      <Results />
       <Programs />
       <Countdown />
       <Community />
