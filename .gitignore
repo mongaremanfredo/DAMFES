@@ -1,0 +1,8 @@
+node_modules
+.next
+out
+next-start.log
+next-start.err
+next-server.pid
+qa-*.png
+.env*.local
